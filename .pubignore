@@ -1,0 +1,19 @@
+# Build artifacts
+build/
+.dart_tool/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Git
+.git/
+.github/
+
+# Other
+*.log
+.DS_Store
+
+CLAUDE.md
+.claude
