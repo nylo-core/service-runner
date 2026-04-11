@@ -15,7 +15,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  service_runner: ^1.0.0
+  service_runner: ^1.0.1
 ```
 
 ## Quick Start

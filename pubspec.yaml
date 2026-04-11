@@ -1,6 +1,6 @@
 name: service_runner
 description: A lightweight Flutter package for service initialization with lifecycle management, splash screen support, and a global service registry.
-version: 1.0.0
+version: 1.0.1
 homepage: https://nylo.dev
 repository: https://github.com/nylo-core/service-runner
 issue_tracker: https://github.com/nylo-core/service-runner/issues
