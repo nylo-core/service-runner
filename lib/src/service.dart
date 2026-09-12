@@ -169,7 +169,7 @@ abstract class Runnable {
   /// If a runnable of the same type is already registered, a warning is logged
   /// and the existing registration is overwritten.
   static void register<T extends Runnable>(T runnable) {
-    final type = runnable.runtimeType;
+    final Type type = runnable.runtimeType;
     if (_registry.containsKey(type)) {
       debugPrint(
         'Warning: Runnable $type is already registered. '
@@ -188,7 +188,7 @@ abstract class Runnable {
   /// final firebase = Runnable.get<FirebaseKit>();
   /// ```
   static T get<T extends Runnable>() {
-    final runnable = _registry[T];
+    final Runnable? runnable = _registry[T];
     if (runnable == null) {
       throw StateError(
         'Runnable $T is not registered. '
@@ -208,7 +208,7 @@ abstract class Runnable {
   /// }
   /// ```
   static T? getOrNull<T extends Runnable>() {
-    final runnable = _registry[T];
+    final Runnable? runnable = _registry[T];
     if (runnable is T) {
       return runnable;
     }
@@ -230,7 +230,7 @@ abstract class Runnable {
   /// Internal method to dispose and clear all runnables.
   /// Used by [ServiceRunner.clear].
   static Future<void> _disposeAndClearAll() async {
-    for (final runnable in _registry.values) {
+    for (final Runnable runnable in _registry.values) {
       await runnable.onDispose();
     }
     _registry.clear();

@@ -1,3 +1,10 @@
+## [1.0.2] - 2026-09-12
+
+### Changed
+- Replaced the `flutter_lints` dev dependency with the `vibe_check` Nylo lint preset and fixed all resulting analyzer issues
+- Added explicit local variable types in the `Runnable` registry (no behavior change)
+- Tightened the failed-initialization test to assert that a `ServiceInitializationException` is thrown instead of silently catching all errors
+
 ## 1.0.1
 
 - Updated dependencies

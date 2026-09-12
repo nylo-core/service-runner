@@ -1,6 +1,15 @@
-include: package:flutter_lints/flutter.yaml
+# This file configures the analyzer, which statically analyzes Dart code to
+# check for errors, warnings, and lints.
 
-linter:
-  rules:
-    - avoid_print
-    - prefer_single_quotes
+analyzer:
+  exclude:
+    - build/**
+
+include: package:vibe_check/nylo.yaml
+plugins:
+  vibe_check:
+    version: ^1.0.1
+    diagnostics:
+      swallowed_exception: warning
+      redundant_null_check: true
+      inline_async_in_builder: true

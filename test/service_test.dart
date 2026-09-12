@@ -62,7 +62,7 @@ void main() {
         final mockService = MockService();
         Runnable.register(mockService);
 
-        final retrieved = Runnable.get<MockService>();
+        final MockService retrieved = Runnable.get<MockService>();
         expect(retrieved, same(mockService));
       });
 
@@ -130,7 +130,7 @@ void main() {
       });
 
       test('should return the created service', () async {
-        final mockService =
+        final MockService mockService =
             await Runnable.add<MockService>(() => MockService());
 
         expect(mockService, isA<MockService>());
@@ -145,7 +145,7 @@ void main() {
         Runnable.register(mock1);
         Runnable.register(mock2);
 
-        final allServices = Runnable.all;
+        final List<Runnable> allServices = Runnable.all;
         expect(allServices.length, 2);
         expect(allServices.contains(mock1), isTrue);
         expect(allServices.contains(mock2), isTrue);
@@ -195,7 +195,7 @@ void main() {
       final mockService = MockService();
       Runnable.register(mockService);
 
-      final retrieved = service<MockService>();
+      final MockService retrieved = service<MockService>();
       expect(retrieved, same(mockService));
     });
 
@@ -244,7 +244,7 @@ void main() {
   group('ServiceInitializationException', () {
     test('should store all fields correctly', () {
       final originalError = Exception('test error');
-      final stackTrace = StackTrace.current;
+      final StackTrace stackTrace = StackTrace.current;
 
       final exception = ServiceInitializationException(
         serviceName: 'TestService',

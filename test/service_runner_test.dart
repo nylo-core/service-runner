@@ -128,7 +128,7 @@ void main() {
       );
 
       expect(ServiceRunner.hasService<AsyncService>(), isTrue);
-      final asyncService = service<AsyncService>();
+      final AsyncService asyncService = service<AsyncService>();
       expect(asyncService.data, 'test-data');
     });
 
@@ -381,7 +381,7 @@ void main() {
       expect(ServiceRunner.isInitializing, isFalse);
 
       // Start init - the flag should be set during the async operation
-      final initFuture = ServiceRunner.init(
+      final Future<void> initFuture = ServiceRunner.init(
         services: [LifecycleTrackingService('test')],
         child: Container(),
       );
@@ -412,12 +412,13 @@ void main() {
 
     testWidgets('should reset isInitializing after failed init',
         (tester) async {
-      try {
-        await ServiceRunner.init(
+      await expectLater(
+        ServiceRunner.init(
           services: [ThrowingOnInitService()],
           child: Container(),
-        );
-      } catch (_) {}
+        ),
+        throwsA(isA<ServiceInitializationException>()),
+      );
 
       expect(ServiceRunner.isInitializing, isFalse);
 
